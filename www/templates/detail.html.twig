@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+	{% include "partial/head.html.twig" %}
+	<body>
+		<!-- Calling method navigation.html.twig-->
+		{% include "partial/navigation.html.twig" %}
+		<div class="container-fluid">
+			<div class="text-white text-center mb-5 detail_image_top_container">
+				<div class="detail_image_top" style="background-image:url('restaurant_images/{{ restaurant.restaurant_image }}')"></div>
+				{# <div class="card-img-overlay col-md-4 position-absolute top-50 start-50 translate-middle "> #}
+				<div class="card-img-overlay col-md-4">
+					<h1 class="card-title" style:"text-bold;">{{restaurant.restaurant_name}}</h1>
+					<h3 class="card-text">{{restaurant.cat_name}}
+					</h3>
+					<p class="card-text">{{restaurant.restaurant_address}}</p>
+				</div>
+			</div>
+			<div class="container mt-5 pt-5">
+				<div class="row align-items-start">
+					<div class="col-md-6">
+						<h4>About the restaurant</h4>
+						<p>{{restaurant.restaurant_details}}</p><br>
+						<h4>Overall average rating</h4>
+						{% if review_average.Review == 5 %}
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+						{% endif %}
+
+						{% if review_average.Review >= 4.5 and review_average.Review < 5 %}
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star-half starChecked"></span>
+						{% endif %}
+
+						{% if review_average.Review >= 4 and review_average.Review < 4.55 %}
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star"></span>
+						{% endif %}
+
+						{% if review_average.Review >= 3.5 and review_average.Review < 4 %}
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star-half starChecked"></span>
+							<span class="fa fa-star"></span>
+						{% endif %}
+
+						{% if review_average.Review >= 3 and review_average.Review < 3.5 %}
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						{% endif %}
+
+						{% if review_average.Review >= 2.5 and review_average.Review < 3 %}
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star-half starChecked"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						{% endif %}
+
+						{% if review_average.Review >= 2 and review_average.Review < 2.5 %}
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						{% endif %}
+
+						{% if review_average.Review >= 1.5 and review_average.Review < 2 %}
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star-half starChecked"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						{% endif %}
+
+						{% if review_average.Review >= 1 and review_average.Review < 1.5 %}
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						{% endif %}
+
+						{% if review_average.Review == 0 and review_average.Review < 1 %}
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						{% endif %}
+
+					</div>
+					<div class="col-md-3">
+						<p class="mb-3">
+							<i class="fa fa-map-marker" aria-hidden="true"></i>
+							{{restaurant.restaurant_address}}</p>
+						<p>
+							<i class="fa fa-clock-o" aria-hidden="true"></i>
+							Opening Hours</p>
+						<p>Monday:
+							{{restaurant.restaurant_hours_mon}}</p>
+						<p>Tuesday:
+							{{restaurant.restaurant_hours_tue}}</p>
+						<p>Wednesday:
+							{{restaurant.restaurant_hours_wed}}</p>
+						<p>Thursday:
+							{{restaurant.restaurant_hours_thu}}</p>
+						<p>Friday:
+							{{restaurant.restaurant_hours_fri}}</p>
+						<p>Saturday:
+							{{restaurant.restaurant_hours_sat}}</p>
+						<p>Sunday:
+							{{restaurant.restaurant_hours_sun}}</p>
+					</div>
+					<div class="col-md-3">
+						<p>
+							<i class="fa fa-globe" aria-hidden="true"></i>
+							<a href="{{restaurant.restaurant_web}}">Website</a>
+						</p>
+						<p>
+							<i class="fa fa-cutlery" aria-hidden="true"></i>
+							<a href="{{restaurant.restaurant_menu}}">Menu</a>
+						</p>
+						<p>
+							<i class="fa fa-phone" aria-hidden="true"></i>
+							{{restaurant.restaurant_phone}}</p>
+					</div>
+				</div>
+			</div>
+			<br>
+			{# User currently logged in and doesn't have any record of review to a particular restaurant #}
+			{# {% if ( user_email | length > 0 ) and ( reviewsById.restaurant_id != restaurant_id) %} #}
+				{% if ( user_email | length > 0 ) and ( reviewsByIdDetail.restaurant_id | length <= 0 ) %}
+					<div class="container mb-5 pt-5"> <h4>Write a review?
+					</h4><br>
+					<form id="review_post" method="post" action="detail.php?id={{reviewsById.restaurant_id}}">
+						<div class="mb-3">
+							<label for="star" class="form-label">
+								<strong>Stars</strong>
+							</label>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<span class="fa fa-star starChecked"></span>
+							<select class="form-select" aria-label="Default select example" name="star" id="star">
+								<option selected>Rate with star</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+						</div>
+						<div class="mb-3">
+							<label for="title" class="form-label">
+								<strong>Title</strong>
+							</label>
+							<input type="text" class="form-control" name="title" id="title" value="{{review_post_title}}" placeholder="Write title your review." required>
+						</div>
+						<div class="mb-3">
+							<label for="comment" class="form-label">
+								<strong>Comment</strong>
+							</label>
+							<textarea class="form-control" name="comment" id="comment" rows="3" value="{{review_post_comment}}" placeholder="Write your comment about this restaurant."></textarea>
+						</div>
+						{# hidden form fields #}
+						<input type="hidden" value="{{reviewsById.restaurant_id}}" name="restaurant_id">
+						<input type="hidden" value="{{user_Id}}" name="user_Id">
+						{% set outcome = result.errors | join(", ") %}
+						<button type="submit" class="btn btn-primary mt-3">Submit</button>
+						{% if outcome | length > 0 %}
+							<div class="alert alert-warning alert-dismissible fade show" role="alert">
+								{{ outcome }}
+								<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+							</div>
+						{% endif %}
+					</form>
+				</div>
+				<h4 class="text-center">Total votes:
+					{{reviews.total}}</h4>
+				
+				{# <div class="container mb-5 pt-5"> #}
+				<div class="container mb-5 pt-5">
+
+					<div class="row">
+						{% for review in reviews.items %}
+							
+							{# <div class="col-md-4 mb-3 review_block "> #}
+							{# <div class="card-review col-md-3 mb-3 "> #}
+							<div class="card-review col-md-4 mb-4 g-col-4">
+							
+								<div class="row">
+									<div class="col-md-2 review_user_icon" style="background-image:url(user_images/{{ review.user_image }})"></div>
+									<div class="col-md-10 card-body pt-4" style="margin-top:-1rem;">
+										<p class="card-title mb-3">
+											{{review.first_name}}
+											{{ review.last_name}}&nbsp;<br>
+											{% if review.review_star == 5 %}
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+											{% endif %}
+											{% if review.review_star == 4 %}
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star"></span>
+											{% endif %}
+
+											{% if review.review_star == 3.5 %}
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star-half starChecked"></span>
+												<span class="fa fa-star"></span>
+											{% endif %}
+
+											{% if review.review_star == 3 %}
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+											{% endif %}
+											{% if review.review_star == 2 %}
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+											{% endif %}
+											{% if review.review_star == 1 %}
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+											{% endif %}
+										</p>
+										<p class="card-text">
+											<strong>{{ review.review_title }}</strong>
+										</p>
+										<p class="card-text">{{ review.review_comment}}</p>
+										{# <p class="card-text">{{ review.review_date}}</p> #}
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			{% else %}
+
+				{% if ( user_email | length > 0 ) and ( reviewsByIdDetail.restaurant_id | length > 0 ) %}
+					<div
+						class="d-grid text-center container mb-5">
+						{# <a class="btn btn-primary " href="review_edit_single.php" role="button">Edit my review?</a>  #}
+						<a href="review_edit_single.php?r={{reviewsByIdDetail.review_id}}&rest={{reviewsByIdDetail.restaurant_id}}" class=" btn btn-primary ">Edit my review?</a>
+					</div>
+				{% elseif ( user_email | length <= 0) %}
+					<div class="d-grid text-center container mb-5">
+						<a class="btn btn-primary " href="signup.php" role="button">Write a review?</a>
+						{# <a href="review_edit_single.php?r={{reviewsByIdDetail.review_id}}&rest={{reviewsByIdDetail.restaurant_id}}" class=" btn btn-primary ">Edit my review?</a>  #}
+					</div>
+				{% endif %}
+				<h4 class="text-center">Total votes:
+					{{reviews.total}}</h4>
+				<div class="container mb-5 pt-5">
+					<div class="row">
+						{% for review in reviews.items %}
+							{# <div class="col-md-4 mb-3 review_block"> #}
+							<div class="card-review col-md-3 mb-3 ">
+								<div class="row">
+									<div class="col-md-2 review_user_icon" style="background-image:url(user_images/{{ review.user_image }})"></div>						
+									<div class="col-md-10 card-body pt-4">
+										<p class="card-title mb-3">
+										{{review.first_name}}
+										{{ review.last_name}}&nbsp;<br>								
+											{% if review.review_star == 5 %}
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+											{% endif %}
+											{% if review.review_star == 4 %}
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star"></span>
+											{% endif %}
+											{% if review.review_star == 3 %}
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+											{% endif %}
+											{% if review.review_star == 2 %}
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+											{% endif %}
+											{% if review.review_star == 1 %}
+												<span class="fa fa-star starChecked"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+												<span class="fa fa-star"></span>
+											{% endif %}
+										</p>
+										<p class="card-text">
+											<strong>{{ review.review_title }}</strong>
+										</p>
+										<p class="card-text">{{ review.review_comment}}</p>
+										{# <p class="card-text">{{ review.review_date}}</p> #}
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+		{% include "partial/footer.html.twig" %}
+		{% include "partial/script.html.twig" %}
+	</body>
+</html>

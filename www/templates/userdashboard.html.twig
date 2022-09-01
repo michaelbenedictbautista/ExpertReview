@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+	{% include "partial/head.html.twig" %}
+	<body>
+		<!-- Calling method navigation.html.twig-->
+		{% include "partial/navigation.html.twig" %}
+		<div class="container">
+			<div class="row">
+				<div class="col-2">
+					<ul class="nav flex-column">
+						<li class="nav-item">
+							<a class="nav-link active text-reset" href="userdashboard.php">
+								<strong class="text-primary" style="margin-left: -1rem;">Dashboard</strong>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active text-reset" style="margin-left: -1rem;" href="review_edit.php">Edit reviews</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active text-reset" style="margin-left: -1rem;" href="edit_account.php">Edit account</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active text-reset" style="margin-left: -1rem;" href="signout.php">Sign out</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active text-reset" style="margin-left: -1rem;" href="delete.php" onclick="return  confirm('do you want to delete Y/N')">Delete acount</a>
+              
+						</li>
+					</ul>
+				</div>
+				<div class="col-10">
+					<div class="container">
+						{# <div class="row"> #}
+						{# <div class="row align-items-center"> #}
+							<div
+							class="row align-items-center"> {# <div class="col-2">  #}
+							<div class="col-md-3 offset-md-3">
+								<a class="navbar-brand" href="userdashboard.php">
+									<img class="img-detail user-image " style="width:150px; height:150px; object-fit:cover; border-radius:500%;display:block; margin: 10px 0px 0px 30px;" src="user_images/{{ user_image }}">
+								</a>
+
+								{# <img src="user_images/{{ user_image }}" class="img-fluid mx-auto d-block" alt="User image" style="width:200px; height:200px; object-fit:cover;border-radius:500%;"> #}
+
+							</div>
+
+							{# <!-- Force next columns to break to new line -->
+																									<div class="w-100"></div> #}
+
+							{# <div class="col-10 text-left">  #}
+							<div class="col" style="margin-left:1em; margin-bottom:1em;">
+
+								<h3>{{user_firstName}}
+									{{user_lastName}}</h3>
+								<a class="navbar-brand" href="https://www.facebook.com/login/">
+									<img class="img-detail user-image" style="width:30px; height:30px; object-fit:cover;border-radius:500%;" src="extra_images/facebookIcon.png">
+								</a>
+								<a class="navbar-brand" href="https://www.instagram.com/">
+									<img class="img-detail user-image" style="width:30px; height:30px; object-fit:cover;border-radius:500%;" src="extra_images/instagramIcon.png">
+								</a>
+
+								<a class="navbar-brand" href="https://twitter.com/?lang=en">
+									<img class="img-detail user-image" style="width:30px; height:30px; object-fit:cover;border-radius:500%;" src="extra_images/twitterIcon.png">
+								</a>
+
+								<a class="navbar-brand" href="https://accounts.google.com/signin/v2/identifier?hl=en&passive=true&continue=https%3A%2F%2Fwww.google.com%2F&ec=GAZAmgQ&flowName=GlifWebSignIn&flowEntry=ServiceLogin">
+									<img class="img-detail user-image" style="width:30px; height:30px; object-fit:cover;border-radius:500%;" src="extra_images/emailIcon.png">
+								</a>
+							</div>
+						</div>
+						<div class="container" style="margin-left:-.5em;">
+							<p>
+								<strong>Username:
+								</strong>
+								{{ user_userName }}</p>
+							<p>
+								<strong>Gender:
+								</strong>
+								{{ user_gender }}</p>
+							<p>
+								<strong>Birthday:
+								</strong>
+								{{ user_bday }}</p>
+							<br>
+								<div class="col">
+									<h3 class="text-center">List of my reviews</h3>
+								</div>
+							</br>
+							<div class="row" style="margin-top: -2rem;">
+								{% for Allreviews in AllreviewsById.items %}
+									<a
+										href="review_edit_single.php?r={{Allreviews.review_id}}&rest={{Allreviews.restaurant_id}}" class="linkUnset">
+										{# <div class="col-md-4 mb-3 review_block_userPage"> #}
+										<div
+											class="col-md-4 mb-3">
+											{# <div class="row" style="row-gap: 1;"> #}
+											<div
+												class="row">
+												{# <div class="col-md-2 review_user_icon" style="background-image:url(user_images/{{ Allreviews.user_image }})"></div> #}
+												<div class="col-md-10 card-body pt-4">
+													<div class="restaurant_list_img" style="background-image:url(restaurant_images/{{ Allreviews.restaurant_image }})"></div>
+													<br>
+													<h5>{{Allreviews.restaurant_name}}
+													</h5>
+													<p
+														class="card-title mb-3">
+														{# {{Allreviews.first_name}} {{ Allreviews.last_name}}&nbsp; #}
+														{% if Allreviews.review_star == 5 %}
+															<span class="fa fa-star starChecked"></span>
+															<span class="fa fa-star starChecked"></span>
+															<span class="fa fa-star starChecked"></span>
+															<span class="fa fa-star starChecked"></span>
+															<span class="fa fa-star starChecked"></span>
+														{% endif %}
+														{% if Allreviews.review_star == 4 %}
+															<span class="fa fa-star starChecked"></span>
+															<span class="fa fa-star starChecked"></span>
+															<span class="fa fa-star starChecked"></span>
+															<span class="fa fa-star starChecked"></span>
+															<span class="fa fa-star"></span>
+														{% endif %}
+														{% if Allreviews.review_star == 3 %}
+															<span class="fa fa-star starChecked"></span>
+															<span class="fa fa-star starChecked"></span>
+															<span class="fa fa-star starChecked"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
+														{% endif %}
+														{% if Allreviews.review_star == 2 %}
+															<span class="fa fa-star starChecked"></span>
+															<span class="fa fa-star starChecked"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
+														{% endif %}
+														{% if Allreviews.review_star == 1 %}
+															<span class="fa fa-star starChecked"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
+														{% endif %}
+													</p>
+													<p class="card-text">
+														<strong>{{ Allreviews.review_title }}</strong>
+													</p>
+													<p class="card-text">{{ Allreviews.review_comment}}</p>
+													<p class="card-text">{{ Allreviews.review_date | date("d/m/Y h:ia", "Australia/NSW")}}</p>
+													{# <div class="row justify-content-between border-bottom pt-3"> #}
+
+												</div>
+											</div>
+										</div>
+									</a>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</body>
+	</html>
+</div></div>{% include "partial/footer.html.twig" %}{% include "partial/script.html.twig" %}</body></html>

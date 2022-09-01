@@ -1,0 +1,5 @@
+# Database Credentials
+SetEnv dbuser expertUser
+SetEnv dbpass ikm
+SetEnv dbname reviewexpert
+SetEnv dbhost db

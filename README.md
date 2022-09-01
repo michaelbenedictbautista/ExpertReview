@@ -1,2 +1,9 @@
-# ExpertReview
-A website application wherein users can read and write reviews for a particular restaurant.
+# AdvanceWebProject
+This is a project for Advance Web
+
+
+PHPmyAdmin
+username = expertUser
+password = ikm
+
+also you can see info in .htaccess

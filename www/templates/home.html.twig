@@ -1,0 +1,123 @@
+<!doctype html>
+<html
+	lang="en">
+	<!-- Calling method head.html.twig-->
+	{% include "partial/head.html.twig" %}
+	<body>
+		{# <div class="container text-center"> #}
+		<!-- Calling method navigation.html.twig-->
+		{% include "partial/navigation.html.twig" %}
+
+		<!-- Image overlay-->
+		<div class="card text-center"> 
+			{# <div class="home_here_img" style="background-image:url(extra_images/home_banner2.jpg)">
+          		<h2 class="welcome_text" style:"text-bold;">"Better Ingredients, Better Review"</h2> 
+       		</div> #}
+			
+				<div class="container-home">
+					<img src="extra_images/home_banner2.jpg" class="img-fluid" alt="Home banner">				
+					<h2 class="welcome_text">"Better ingredients, Better review"</h2>						
+				</div>
+
+			<div class="container mt-5">
+				<div class="row">
+					{% for restaurant in restaurants.items | slice(0, 15) %}
+						<div class="col-md-4 mb-3">
+							<div class="card">
+								<div class="restaurant_list_img" style="background-image:url(restaurant_images/{{ restaurant.picture  }})"></div>
+								<div class="card-body">
+									<h5 class="card-title">{{ restaurant.restaurant_name }}</h5>
+									{# <h1>{{review_average.restaurant_id}}</h1> #}
+									{# {% if review_average.Review == 5 and restaurant.id | length > 0 %} #}
+									{# {% if review_average.Review == 5 %}
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star starChecked"></span>
+									{% endif %}
+
+									{% if review_average.Review >= 4.5 and review_average.Review < 5 %}
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star-half starChecked"></span>
+									{% endif %}
+
+									{% if review_average.Review >= 4 and review_average.Review < 4.55 %}
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star"></span>
+									{% endif %}
+
+									{% if review_average.Review >= 3.5 and review_average.Review < 4 %}
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star-half starChecked"></span>
+										<span class="fa fa-star"></span>
+									{% endif %}
+
+									{% if review_average.Review >= 3 and review_average.Review < 3.5 %}
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									{% endif %}
+
+									{% if review_average.Review >= 2.5 and review_average.Review < 3 %}
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star-half starChecked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									{% endif %}
+
+									{% if review_average.Review >= 2 and review_average.Review < 2.5 %}
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									{% endif %}
+
+									{% if review_average.Review >= 1.5 and review_average.Review < 2 %}
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star-half starChecked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									{% endif %}
+
+									{% if review_average.Review >= 1 and review_average.Review < 1.5 %}
+										<span class="fa fa-star starChecked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									{% endif %}
+
+									{% if review_average.Review == 0 and review_average.Review < 1 %}
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									{% endif %} #}<p class="card-text"> {{ restaurant.category}}</p>
+									<p class="card-text">{{ restaurant.restaurant_address}}</p>
+									<a href="detail.php?id={{restaurant.id}}" class="btn btn-primary">View Detail</a>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		{% include "partial/footer.html.twig" %}
+		{% include "partial/script.html.twig" %}
+	</body>
+</html>

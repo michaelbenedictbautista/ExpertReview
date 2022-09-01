@@ -1,0 +1,193 @@
+.body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.bg-danger {
+  background-color: red !important;
+}
+
+.text-warning {
+  color: yellow;
+}
+
+/* .home_here_img {
+  margin-top: -3rem;
+  height: 50vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+} */
+
+
+.container-home {
+  margin-top: -3rem;
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+
+.welcome_text {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 926px) {
+  .welcome_text {
+    font-size: 1em;   
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .welcome_text {
+    font-size: .7em;
+  }
+}
+
+.container-about {
+  margin-top: -3rem;
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+.about_text {
+  color: rgb(0, 0, 0);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 926px) {
+  .about_text {
+    font-size: 1em;
+    font-style: bold;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .about_text {
+    font-size: .7em;
+    font-style: bold;
+  }
+}
+
+
+.restaurant_list_img {
+  display: block;
+  height: 12vmax;
+  /* height: 18vmax; */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* border-radius: 100%; */
+}
+
+
+.card-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  max-height: 10vh;
+
+
+  /* The number of lines to be displayed */
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.detail_image_top {
+  width: 100%;
+  height: 64vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.detail_image_top_container {
+  margin-top: -3rem;
+  position: relative;
+}
+
+.card-img-overlay {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} 
+
+
+.fa {
+  padding-right: .5rem !important;
+  color: #0d6efd;
+}
+
+.fa-star {
+  color: #eee;
+}
+
+.starChecked {
+  color: orange;
+}
+
+
+/* .review_block {
+  border: 1px solid #aaa;
+  padding: 1rem 1.5rem;
+  margin: 12px;
+  width: 31.5%;
+  
+  display: block;
+} */
+
+.card-review {
+  border: 1px solid #aaa;
+  padding: 1rem 1.5rem;
+}
+
+
+.review_user_icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 100%;
+  height: 64px;
+  width: 64px;
+}
+
+/* .review_block_userPage {
+  border: 1px solid #aaa;
+  padding: 1rem 1.5rem;
+  margin: 5px;
+  width: 30%;
+} */
+
+/* review_block_userPage {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 1rem 1.5rem;
+  margin: 10px;
+} */
+
+.linkUnset {
+  text-decoration: none;
+  color: unset;
+  display: contents;
+}
+
+.review_edit_single_img {
+  display: block;
+  height: 50vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}

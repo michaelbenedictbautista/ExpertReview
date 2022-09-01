@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+    {% include "partial/head.html.twig" %}
+    <body>
+    <!-- Calling method navigation.html.twig--> 
+    {% include "partial/navigation.html.twig" %}
+    <div class="container">
+        <div class="row"> 
+            <div class="col-2">   
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                    <a class="nav-link active text-reset" style="margin-left: -1rem;" href="userdashboard.php">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active text-reset" style="margin-left: -1rem;" href="review_edit.php"><strong class="text-primary">Edit reviews</strong></a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active text-reset" style="margin-left: -1rem;" href="edit_account.php">Edit account</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active text-reset" style="margin-left: -1rem;" href="signout.php">Sign out</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-10">
+                            {# <div class="container"> #}
+                <div class="container" style="margin: 0px 0px 0px 5px;">
+                    <div class="mb-3 text-left ">
+                        {# <h4 class="">List of my Reviews</h4><br> #}
+                        <div class="mb-3">
+                            <div class="row justify-content-between border-bottom border-primary" style="margin-bottom:-1rem; margin-top:.5rem;">
+                                                            <div class="col-3 text-left">                              
+                                                                    <p><strong>Name</strong> </p>
+                                                            </div>
+                                                            <div class="col-4 text-left">                              
+                                                                    <p><strong>Title</strong> </p>
+                                                            </div>
+                                                            <div class="col-2 text-left">                              
+                                                                    <p><strong>Star</strong> </p>
+                                                            </div>
+                                                            <div class="col-3 text-left">                              
+                                                                    <p><strong>Date</strong> </p>
+                                                            </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            {% for Allreviews in AllreviewsById.items %}
+                                                            <a href="review_edit_single.php?r={{Allreviews.review_id}}&rest={{Allreviews.restaurant_id}}" class="linkUnset">
+                                                                <div class="row justify-content-between border-bottom pt-3">
+                                                                    <div class="col-3 text-left">                       
+                                                                            <p>{{Allreviews.restaurant_name}}</p>
+                                                                    </div>                 
+                                                                    <div class="col-4 text-left">                              
+                                                                            <p>{{Allreviews.review_title}}</p>
+                                                                    </div>
+                                                                    <div class="col-2 text-left">
+                                                                            {% if Allreviews.review_star == 5 %}
+                                                                            <span class="fa fa-star starChecked"></span>
+                                                                            <span class="fa fa-star starChecked"></span>
+                                                                            <span class="fa fa-star starChecked"></span>
+                                                                            <span class="fa fa-star starChecked"></span>
+                                                                            <span class="fa fa-star starChecked"></span>
+                                                                            {% endif %}
+                                                                            {% if Allreviews.review_star == 4 %}
+                                                                            <span class="fa fa-star starChecked"></span>
+                                                                            <span class="fa fa-star starChecked"></span>
+                                                                            <span class="fa fa-star starChecked"></span>
+                                                                            <span class="fa fa-star starChecked"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            {% endif %}
+                                                                            {% if Allreviews.review_star == 3 %}
+                                                                            <span class="fa fa-star starChecked"></span>
+                                                                            <span class="fa fa-star starChecked"></span>
+                                                                            <span class="fa fa-star starChecked"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            {% endif %}
+                                                                            {% if Allreviews.review_star == 2 %}
+                                                                            <span class="fa fa-star starChecked"></span>
+                                                                            <span class="fa fa-star starChecked"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            {% endif %}
+                                                                            {% if Allreviews.review_star == 1 %}
+                                                                            <span class="fa fa-star starChecked"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            {% endif %}
+                                                                    </div>                    
+                                                                    <div class="col-3 text-left">                             
+                                                                            {# <p>{{Allreviews.review_date | date("d/m/y h:ia", "Australia/NSW")}}</p> #}
+                                                                            <p>{{Allreviews.review_date | date("d/m/y", "Australia/NSW")}}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                            {% endfor %}  
+                        </div>
+                    </div>
+                    {# <br>
+                    <h4 class="text-center">Edit reviews</h4><br>
+
+                    <div class="mb-3">
+                    <h5>Star</h5>
+                        <div>
+                            <select class="form-select" aria-label="Select a star">
+                            <option selected>Select a star</option>
+                            <option value="1">One star</option>
+                            <option value="2">Two star</option>
+                            <option value="3">Three star</option>
+                            <option value="3">Four star</option>
+                            <option value="3">Five star</option>
+                            </select> 
+                        </div>
+                    </div>
+                
+                    <div class="mb-3">
+                        <h5>Title</h5>
+                        <input type="review_title" class="form-control" id="review-title" aria-describedby="reviewTitleHelp" placeholder="Type a title">              
+                    </div>
+
+                    <div class="mb-3">
+                        <h5>Comment</h5>          
+                        <textarea class="form-control" id="review-comment" rows="3">Type comment...</textarea>
+                    </div> 
+
+                    <div class="mb-3">
+                        <div class="row justify-content-between">
+                        <div class="col-4 text-left">
+                                <button type="Post!" class="btn btn-primary mt-3">Update</button>
+                        </div>
+                            <div class="col-4 text-left"> <br>
+                                <p> Delete review?</p>
+                            </div>
+                        </div>           
+                    </div> #}
+                </div>  
+            </div>
+        </div>
+    </div>
+    {% include "partial/footer.html.twig" %}
+    {% include "partial/script.html.twig" %}
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+	{% include "partial/head.html.twig" %}
+	<body>
+		<!-- Calling method navigation.html.twig--> 
+		{% include "partial/navigation.html.twig" %}
+		<div class="container">
+			<div class="row"> 
+				<div class="col-2">
+					<p><strong>Categories</strong></p>
+					<P><a href="search_main.php" class="dropdown-item" style="margin-left: -1rem;">All list</a></p>
+					{% for search in categories.items %}
+						<p><a class="dropdown-item" style="margin-left: -1rem;" href="search_category.php?cat={{search.cat_id}}">{{search.cat_name}}</a></p>
+					{% endfor %}
+					</div>
+					<div class="col-10 text-center">
+					<h3>We found {{total}} item/s</h3> </br>
+					<div class="container">
+							<div class="row text-center">
+							{% for item in result %}
+							<div class="col-md-4 mb-3">
+							<div class="restaurant_list_img" style="background-image:url(restaurant_images/{{ item.restaurant_image }})"></div>
+							<div class="card-body">
+								<h5 class="card-title">{{ item.restaurant_name }}</h5>
+								<p class="card-text">{{ item.restaurant_details}}</p>
+								<a href="detail.php?id={{item.restaurant_id}}" class="btn btn-primary">View Detail</a>
+							</div>
+							</div>
+							{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+		{% include "partial/footer.html.twig" %}
+		{% include "partial/script.html.twig" %}
+	</body>
+</html>

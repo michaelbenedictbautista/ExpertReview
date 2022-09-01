@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+	<!-- Calling method head.html.twig-->
+	{% include "partial/head.html.twig" %}
+	<body>
+		{# <div class="container text-center"> #}
+		<!-- Calling method navigation.html.twig-->
+		{% include "partial/navigation.html.twig" %}
+
+			<div class="card text-center"> 
+			<!-- Image overlay-->
+			{# <div class="card text-center"> <div class="home_here_img" style="background-image:url(extra_images/About3.jpg)">
+									<h2 class="about_text" style:"text-bold;">"We believe in exceptional review"</h2>
+						</div> #}
+
+				<div class="container-about"> <img src="extra_images/About3.jpg" class="img-fluid" alt="About banner">
+				<h2 class="about_text" style:"text-bold;">"We believe in exceptional review"</h2>
+			</div>
+
+			<div class="container mt-5 text-start">
+				<h4>About Us</h4>
+				<p class="text-break">Expert Review is your go-to guide for eating out and eating in. 
+												We are the number one destination for credible, independent restaurant, bar and cafe reviews 
+												and bring you the latest in food news across Au stralia and the globe.</p><br>
+
+				<h4>Reputation matters</h4>
+				<p class="text-break">Businesses earn great reviews on Expert Reviews the same way they 
+												build their reputations in the community: by creating great products, services, and 
+												customer experiences. Expert Reviews work hard to feature content that reflects real 
+												experiences that consumers are inspired to share.
+				</p><br>
+				<h4>Authenticity & reliability</h4>
+				<p class="text-break">Under Expert Reviews’ policies, businesses are not permitted to ask 
+												their customers for reviews, and consumers can only write about their first-hand experiences. 
+												We also use an automated recommendation software, which is designed to identify and 
+												recommend the most reliable content.
+				</p><br>
+				<h4>Fighting misinformation</h4>
+				<p class="text-break">Fake news and deceptive behaviour 
+												are unfortunately common on the web. We have teams and policies in place to 
+												protect our community of consumers and businesses and prevent the spread of misinformation 
+												on Expert Reviews.
+					<br><br>
+					Our users have contributed over 200 million reviews of almost every type 
+												of restaurant. Our business revolves around the connections made between the consumers who 
+												read and write reviews and the local businesses that they describe.
+					<br><br>
+					Here we will provide you with only interesting content, which you will like very much. We're dedicated to providing 
+												you with the best restaurant reviews with a focus on dependability and quality. We're working 
+												to turn our passion for reviews into a booming online website. We hope you enjoy our Expert 
+												Review restaurants website as much as we enjoy offering them to you.
+				</p><br>
+			</div>
+			<p class="text-center fw-bold">Thanks For Visiting Our Site</p>
+
+			<div class="text-center">
+				<a class="navbar-brand" href="https://www.facebook.com/login/">
+					<img class="img-detail user-image" style="width:30px; height:30px; object-fit:cover;border-radius:500%;" src="extra_images/facebookIcon.png">
+				</a>
+				<a class="navbar-brand" href="https://www.instagram.com/">
+					<img class="img-detail user-image" style="width:30px; height:30px; object-fit:cover;border-radius:500%;" src="extra_images/instagramIcon.png">
+				</a>
+
+				<a class="navbar-brand" href="https://twitter.com/?lang=en">
+					<img class="img-detail user-image" style="width:30px; height:30px; object-fit:cover;border-radius:500%;" src="extra_images/twitterIcon.png">
+				</a>
+
+				<a class="navbar-brand" href="https://accounts.google.com/signin/v2/identifier?hl=en&passive=true&continue=https%3A%2F%2Fwww.google.com%2F&ec=GAZAmgQ&flowName=GlifWebSignIn&flowEntry=ServiceLogin">
+					<img class="img-detail user-image" style="width:30px; height:30px; object-fit:cover;border-radius:500%;" src="extra_images/emailIcon.png">
+				</a>
+			</div><br>
+		</div>
+		{% include "partial/footer.html.twig" %}
+		{% include "partial/script.html.twig" %}
+	</body>
+</html>

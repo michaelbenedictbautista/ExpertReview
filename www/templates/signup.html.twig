@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+    {% include "partial/head.html.twig" %}
+    <body>
+        {% include "partial/navigation.html.twig" %}
+        <div class="container">
+            <h1 class="text-center mb-5">Create your account</h1>
+            <form id="signup" method="post" action="signup.php" enctype="multipart/form-data">
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="firstName" class="form-label">First name *</label>
+                        <input type="text" class="form-control" name="firstName" id="firstName" aria-label="First name" value="{{user_firstName}}" required>
+                    </div>
+                    <div class="col">
+                        <label for="lastName" class="form-label">Last name *</label>
+                        <input type="text" class="form-control" name="lastName" id="lastName" aria-label="Last name" value="{{user_lastName}}" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="userName" class="form-label">User name *</label>
+                    <input type="text" class="form-control" name="userName" id="userName" value="{{user_userName}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address *</label>
+                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" value="{{user_email}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password *</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="minimum 8 characters" value="{{user_pw}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="bday" class="form-label">Birthday *</label>
+                    <input type="date" class="form-control" name="bday" id="bday" value="{{user_bday}}">
+                </div>
+                <div class="mb-3">
+                    <label for="gender" class="form-label">Gender *</label>
+                    <select class="form-select" name="gender" id="gender" aria-label="Default select example" value="{{user_gender}}">
+                        <option selected>Select your gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="others">Others</option>
+                        <option value="notTell">Not prefer to tell</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Choose your profile picture *</label>
+                    <input class="form-control" type="file" name="formFile" id="formFile" value="{{user_formFile}}" onchange="fileValidation()">
+                </div>
+                {% set outcome = result.errors | join(", ") %}
+                <button type="submit" class="btn btn-primary mt-3">Create it!!</button>
+                {% if outcome | length > 0 %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {{ outcome }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endif %}
+            </form>
+        </div>
+    {% include "partial/footer.html.twig" %}
+    {% include "partial/script.html.twig" %}
+    </body>
+</html>

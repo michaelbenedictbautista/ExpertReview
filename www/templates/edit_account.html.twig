@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+    {% include "partial/head.html.twig" %}
+    <body>
+    <!-- Calling method navigation.html.twig--> 
+    {% include "partial/navigation.html.twig" %}
+    <div class="container">
+        <div class="row"> 
+            <div class="col-2">   
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                    <a class="nav-link active text-reset" style="margin-left: -1rem;" href="userdashboard.php">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active text-reset" style="margin-left: -1rem;" href="review_edit.php">Edit reviews</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active text-reset" style="margin-left: -1rem;" href="edit_account.php"><strong class="text-primary">Edit account</strong></a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active text-reset" style="margin-left: -1rem;" href="signout.php">Sign out</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-10 text-left">                                                   
+                <div class="container">
+                    {# <form id="review_post" method="post" action="review_edit.php?rId={{reviewId}}">#}
+                    <form id="user" method="post" action="userdashboard.php?uId = {{user_Id}}">
+
+                        <div class="row mb-3">
+                            <div class="col-md-3 offset-md-3" style="margin-left: 4rem;">
+                                <a class="navbar-brand " href="userdashboard.php">
+                                    <img class="img-detail user-image" style="width:100px; height:100px; object-fit:cover;border-radius:500%;" src="user_images/{{ user_image }}">                
+                                </a>
+                            </div>
+                            <div class="col">
+                                <label for="formFile" class="form-label">Upload a picture?</label>
+                                <input class="form-control" type="file" name="formFile" id="formFile" value="{{user_formFile}}" onchange="fileValidation()">
+                            </div>
+                        </div>   
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="firstName" class="form-label">First name *</label>
+                                <input type="text" class="form-control" name="firstName" id="firstName" aria-label="First name" value="{{user_firstName}}" required>
+                            </div>
+                            <div class="col">
+                                <label for="lastName" class="form-label">Last name *</label>
+                                <input type="text" class="form-control" name="lastName" id="lastName" aria-label="Last name" value="{{user_lastName}}" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userName" class="form-label">User name *</label>
+                            <input type="text" class="form-control" name="userName" id="userName" value="{{user_userName}}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address *</label>
+                            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" value="{{user_email}}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password *</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="minimum 8 characters"  required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="bday" class="form-label">Birthday</label>
+                            <input type="date" class="form-control" name="bday" id="bday" value="{{user_bday}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="gender" class="form-label">Gender</label>
+                            <select class="form-select" name="gender" id="gender" aria-label="Default select example" value="{{user_gender}}">
+                                <option selected>{{user_gender}}</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="others">Others</option>
+                                <option value="notTell">Not prefer to tell</option>
+                            </select>
+                        </div>
+                        {# hidden form fields #}
+                        {# <input type="hidden" value="{{reviewId}}" name="review_id"> #}
+                        <input type="hidden" value="{{user_Id}}" name="user_Id">
+                        {% set outcome = result.errors | join(", ") %}
+                        <button type="submit" class="btn btn-primary mt-3">Update</button>
+                        <a href="userdashboard.php"><div class="btn btn-secondary ml-3 mt-3">Cancel</div></a>
+                        {% if outcome | length > 0 %}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                {{ outcome }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endif %}
+                    </form>                           
+                </div>  
+            </div>
+        </div>
+    </div>
+    {% include "partial/footer.html.twig" %}
+    {% include "partial/script.html.twig" %}
+    </body>
+</html>
