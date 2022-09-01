@@ -1,9 +1,3 @@
-# AdvanceWebProject
-This is a project for Advance Web
+# AdvancedWebProject
 
-
-PHPmyAdmin
-username = expertUser
-password = ikm
-
-also you can see info in .htaccess
+Expert Review is a web application wherein users are able to read and write comments for a particular restaurant and rate them as well.
