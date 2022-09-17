@@ -3,7 +3,6 @@
 require("vendor/autoload.php");
 
 use restaurantreview\Search;
-use restaurantreview\Restaurant;
 use restaurantreview\Session;
 
 // Instantiate Search class

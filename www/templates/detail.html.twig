@@ -140,10 +140,9 @@
 				</div>
 			</div>
 			<br>
-			{# User currently logged in and doesn't have any record of review to a particular restaurant #}
-			{# {% if ( user_email | length > 0 ) and ( reviewsById.restaurant_id != restaurant_id) %} #}
-				{% if ( user_email | length > 0 ) and ( reviewsByIdDetail.restaurant_id | length <= 0 ) %}
-					<div class="container mb-5 pt-5"> <h4>Write a review?
+			{% if ( user_email | length > 0 ) and ( reviewsByIdDetail.restaurant_id | length <= 0 ) %}
+				<div class="container mb-5 pt-5">
+					<h4>Write a review?
 					</h4><br>
 					<form id="review_post" method="post" action="detail.php?id={{reviewsById.restaurant_id}}">
 						<div class="mb-3">
@@ -191,18 +190,16 @@
 				</div>
 				<h4 class="text-center">Total votes:
 					{{reviews.total}}</h4>
-				
+
 				{# <div class="container mb-5 pt-5"> #}
 				<div class="container mb-5 pt-5">
 
 					<div class="row">
 						{% for review in reviews.items %}
-							
+
 							{# <div class="col-md-4 mb-3 review_block "> #}
 							{# <div class="card-review col-md-3 mb-3 "> #}
-							<div class="card-review col-md-4 mb-4 g-col-4">
-							
-								<div class="row">
+								<div class="card-review col-md-4 mb-4 g-col-4"> <div class="row">
 									<div class="col-md-2 review_user_icon" style="background-image:url(user_images/{{ review.user_image }})"></div>
 									<div class="col-md-10 card-body pt-4" style="margin-top:-1rem;">
 										<p class="card-title mb-3">
@@ -286,11 +283,11 @@
 							{# <div class="col-md-4 mb-3 review_block"> #}
 							<div class="card-review col-md-3 mb-3 ">
 								<div class="row">
-									<div class="col-md-2 review_user_icon" style="background-image:url(user_images/{{ review.user_image }})"></div>						
+									<div class="col-md-2 review_user_icon" style="background-image:url(user_images/{{ review.user_image }})"></div>
 									<div class="col-md-10 card-body pt-4">
 										<p class="card-title mb-3">
-										{{review.first_name}}
-										{{ review.last_name}}&nbsp;<br>								
+											{{review.first_name}}
+											{{ review.last_name}}&nbsp;<br>
 											{% if review.review_star == 5 %}
 												<span class="fa fa-star starChecked"></span>
 												<span class="fa fa-star starChecked"></span>

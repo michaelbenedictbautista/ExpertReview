@@ -40,4 +40,3 @@ echo $twig -> render(
     "user_Id"=> $user_Id,
     "user_image" => $user_image
   ] );
-?>

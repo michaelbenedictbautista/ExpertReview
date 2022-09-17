@@ -7,21 +7,17 @@ use restaurantreview\Search;
 use restaurantreview\Session;
 use restaurantreview\Review;
 
-//////////////////////////////////////
-// if( $_GET["r"] != NULL && $_GET["rest"] != NULL) {
-//   $review_id = $_GET['r'];
-//   $restaurant_id = $_GET['rest'];
-// }
-
 $review = new Review();
-// get declared value from the review form made by the user
+
+// Get declared value from the review form made by the user
 if( $_SERVER["REQUEST_METHOD"] == "POST" ) {
   $user_id = $_POST["user_Id"];
   $review_comment = $_POST["comment"];
   $restaurant_id = $_POST["restaurant_id"];
   $review_star = $_POST["star"];
   $review_title = $_POST["title"];
-  // create the review
+
+  // Create the review
   $add = $review -> addReview($user_id, $review_comment, $restaurant_id, $review_star, $review_title );
   if( $add == true ) {
     // tell user review has been posted
@@ -31,7 +27,7 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ) {
   }
 }
 
-// global variable
+// Global variable
 $restaurant_id = $_GET['id'];
 
 $restaurant = new Restaurant();
@@ -53,9 +49,7 @@ $user_image = Session::get("user_image");
 $reviews = $review -> getReviews($restaurant_id);
 $reviewsById = $review -> getReviewsByUserId($restaurant_id);
 $reviewsByIdDetail = $review -> getReviewsByUserIdDetail($user_Id, $restaurant_id);
-// $AllreviewsByUser = $review -> getAllReviewsByUser($user_Id);
-/////////////////////////////////////////
-//$reviewDetails = $review -> getReviewDetailsByReviewId($review_id);
+
 $review_average = $review -> getReviewAverageByRestId($restaurant_id);
 
 // Create twig environment
@@ -74,9 +68,6 @@ echo $twig -> render("detail.html.twig", [
   "reviews" => $reviews,
   "reviewsById" => $reviewsById,
   "reviewsByIdDetail" => $reviewsByIdDetail,
-  // "AllreviewsByUser" => $AllreviewsByUser,
-  /////////////////////////////
-  //"reviewDetails" => $reviewDetails,
    "review_average" => $review_average,
 
   // Session after login

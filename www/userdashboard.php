@@ -5,7 +5,6 @@ require("vendor/autoload.php");
 use restaurantreview\Account;
 use restaurantreview\Search;
 use restaurantreview\Session;
-use restaurantreview\Restaurant;
 use restaurantreview\Review;
 
 $account = new Account();
@@ -52,7 +51,6 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" && (isset($user_Id))) {
     $user_gender = $_POST['gender'];
     $user_Id = $user_Id;
 
-    // $account -> updateAccount ($user_image, $user_firstName, $user_lastName, $user_userName, $user_email, $user_pw, $user_bday, $user_gender, $user_Id);
     $result = $account -> updateAccount ($user_image, $user_firstName, $user_lastName, $user_userName, $user_email, $user_pw, $user_bday, $user_gender, $user_Id);
 
     Session::set("user_image", $user_image);
@@ -65,12 +63,10 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" && (isset($user_Id))) {
     Session::set("user_gender", $user_gender);
     // Session::set("user_id", $user_id);
     
-
     echo "<script>
     alert('Account updated successfully!');
     window.location.href='userdashboard.php';
     </script>";
-
 }
 
 // Instantiate Review class

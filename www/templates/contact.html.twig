@@ -1,38 +1,38 @@
 <!doctype html>
 <html lang="en">
-    {% include "partial/head.html.twig" %}
-    <body>
-        {% include "partial/navigation.html.twig" %}
-        <div class="container">
-            <h1 class="text-center mb-5">Talk to us</h1>
-            <form id="signin" method="post" action="signin.php">
-                <div class="mb-3">
-                {% set fullName = user_firstName ~ ' ' ~ user_lastName %}
-                    <label for="yourName" class="form-label">Your name *</label>
-                    <input type="text" class="form-control" name="yourName" id="yourName" placeholder="put your full name" required>
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email *</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="put your email address" required>
-                </div>
+	{% include "partial/head.html.twig" %}
+	<body>
+		{% include "partial/navigation.html.twig" %}
+		<div class="container">
+			<h1 class="text-center mb-5">Talk to us</h1>
+			<form id="signin" method="post" action="signin.php">
+				<div class="mb-3">
+					{% set fullName = user_firstName ~ ' ' ~ user_lastName %}
+					<label for="yourName" class="form-label">Your name *</label>
+					<input type="text" class="form-control" name="yourName" id="yourName" placeholder="put your full name" required>
+				</div>
+				<div class="mb-3">
+					<label for="email" class="form-label">Email *</label>
+					<input type="email" class="form-control" name="email" id="email" placeholder="put your email address" required>
+				</div>
 
-                <div class="mb-3">
-                        <h5>Message *</h5>
-                        <textarea class="form-control" id="review-comment" rows="3" placeholder="Type your message here..." required></textarea>                  
-                </div> 
+				<div class="mb-3">
+					<h5>Message *</h5>
+					<textarea class="form-control" id="review-comment" rows="3" placeholder="Type your message here..." required></textarea>
+				</div>
 
-                {% set outcome = result.errors | join(", ") %}
-                <button type="submit" class="btn btn-primary mt-3">Send</button>
-                <button type="reset" class="btn btn- mt-3">Cancel</button>
-                {% if outcome | length > 0 %}
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        {{ outcome }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                {% endif %}
-            </form>
-        </div>
-    {% include "partial/footer.html.twig" %}
-    {% include "partial/script.html.twig" %}
-    </body>
+				{% set outcome = result.errors | join(", ") %}
+				<button type="submit" class="btn btn-primary mt-3">Send</button>
+				<button type="reset" class="btn btn- mt-3">Cancel</button>
+				{% if outcome | length > 0 %}
+					<div class="alert alert-warning alert-dismissible fade show" role="alert">
+						{{ outcome }}
+						<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+					</div>
+				{% endif %}
+			</form>
+		</div>
+		{% include "partial/footer.html.twig" %}
+		{% include "partial/script.html.twig" %}
+	</body>
 </html>

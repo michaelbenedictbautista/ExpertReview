@@ -42,7 +42,6 @@ $reviewsByIdDetail = $review -> getReviewsByUserIdDetail($user_Id, $restaurant_i
 $restaurant = new Restaurant();
 $restaurantDetails = $restaurant -> getDetail($review_id);
 
-
 // Create twig environment
 $loader = new \Twig\Loader\FilesystemLoader("templates");
 $twig = new Twig\Environment( $loader, [ "cache" => false ] );

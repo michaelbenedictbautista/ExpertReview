@@ -49,8 +49,6 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" && $_GET["rId"] != NULL) {
 
 $reviewsByIdDetail = $review -> getAllReviewsByUser ($user_Id, 'rest.restaurant_id');
 
-
-
 // Create twig environment
 $loader = new \Twig\Loader\FilesystemLoader("templates");
 $twig = new Twig\Environment( $loader, [ "cache" => false ] );
@@ -71,7 +69,6 @@ echo $twig -> render(
    "reviewsById" => $reviewsById,
    "reviewsByIdDetail" => $reviewsByIdDetail,
    //"AllreviewsById" => $allReviewsById,
-
 
     // Session after login
     "user_email" => $user_email,

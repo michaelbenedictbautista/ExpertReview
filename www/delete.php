@@ -33,9 +33,7 @@ if ($result["success"] == true) {
     $user_userName = Session::unset("user_userName");
 
     header('Location: /'); 
-
 }
-
 
 // create twig environment
 $loader = new \Twig\Loader\FilesystemLoader("templates");
@@ -55,6 +53,5 @@ echo $twig -> render(
         "user_gender" => $user_gender,
         "user_userName" => $user_userName,
     ]);
-
 
 ?>
